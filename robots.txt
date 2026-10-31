@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /index.html
+
+User-agent: Yeti
+Disallow: /intro.html
+
+User-agent: Googlebot
+Disallow: /reduce.html
