@@ -6,3 +6,5 @@ Disallow: /intro.html
 
 User-agent: Googlebot
 Disallow: /reduce.html
+
+Sitemap: https://knowledge-youtuber-homepage.pages.dev/sitemap.xml
