@@ -1,6 +1,8 @@
 import { hashPassword, jsonResponse, randomHex, validSameOrigin } from '../../../auth-utils.js';
 
-const PASSWORD_ITERATIONS = 310_000;
+// Keep password derivation inside Workers Free CPU limits; stored per user so
+// iterations can be raised for future accounts without breaking old hashes.
+const PASSWORD_ITERATIONS = 20_000;
 
 export async function onRequestPost({ request, env }) {
   if (!validSameOrigin(request)) return jsonResponse({ error: '요청 출처를 확인할 수 없습니다.' }, 403);
