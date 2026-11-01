@@ -21,15 +21,19 @@
 - `creator-topics.html` — 홈페이지의 관심 분야를 소개하는 페이지입니다.
 - `knowledge-archive.html` — 영상별 핵심 내용과 참고 자료를 정리한 게시판형 아카이브입니다.
 - `archive.css` — 아카이브 게시판 전용 반응형 스타일입니다. 게시글 상세는 HTML `<details>` 요소로 펼쳐 볼 수 있습니다.
-- `sitemap.xml` — 검색엔진이 사이트 페이지를 발견할 수 있도록 돕는 XML 사이트맵입니다.
+- `archive-client.js` — 아카이브와 Pages Function API 간 게시글·댓글 조회/등록을 연결합니다.
+- `functions/api/archive.js` — Cloudflare Pages Function API입니다. `GET /api/archive`로 목록을 읽고 `POST /api/archive`로 게시글/댓글을 저장합니다.
+- `migrations/0001_create_archive_entries.sql` — 게시글과 댓글을 함께 보관하는 단일 D1 테이블 `archive_entries`와 초기 글/댓글 데이터입니다.
+- `wrangler.toml` — Pages 출력 폴더와 D1 바인딩을 설정합니다. Cloudflare에서 생성한 D1 ID가 필요합니다.
+- `sitemap.xml` — 검색엔진용 XML 사이트맵입니다.
 - `creator.css` — 홈페이지와 하위 페이지의 공통 스타일 및 반응형 레이아웃입니다.
 - `creator.js` — 영상 필터, 현재 페이지 표시, 모바일 내비게이션 동작입니다.
 - `robots.txt` — 검색 로봇별 크롤링 규칙입니다.
 
 ## 로컬에서 보기
 
-1. 저장소 폴더에서 `creator.html` 또는 `index.html`을 웹 브라우저로 엽니다.
-2. 페이지 상단 메뉴에서 크리에이터 소개, 콘텐츠, 관심 분야, 지식 아카이브로 이동할 수 있습니다.
+1. 정적 화면은 `creator.html` 또는 `knowledge-archive.html`을 브라우저에서 엽니다. 실제 API 연동을 테스트하려면 Node.js/npm을 설치하고 `npx wrangler pages dev .`를 실행합니다.
+2. Cloudflare Pages에서 Functions/D1 binding을 구성한 후 배포된 URL의 `/knowledge-archive`에서 게시글과 댓글을 이용할 수 있습니다.
 
 권장 진입 페이지:
 
@@ -37,16 +41,46 @@
 creator.html
 ```
 
-사이트맵:
+검색엔진용 사이트맵:
 
 ```text
-sitemap.html
+sitemap.xml
 ```
 
 ## 동작 및 외부 의존성
 
-- 콘텐츠 페이지의 필터와 모바일 메뉴는 브라우저 기본 JavaScript로 동작합니다. 지식 아카이브는 HTML과 CSS만 사용합니다.
-- 아카이브의 댓글 입력 폼은 화면 예시이며, 댓글을 실제 등록·저장하려면 서버와 데이터 저장소 연동이 필요합니다.
+- 콘텐츠 페이지의 필터와 모바일 메뉴, 아카이브 데이터 조회/등록은 브라우저 JavaScript로 동작합니다.
+- 게시글·댓글 저장용 Pages Function API와 D1 migration 코드가 준비되어 있습니다. 게시글과 댓글은 `entry_type`과 `parent_id`로 구분해 단일 `archive_entries` 테이블에 저장하도록 설계했습니다.
+- Cloudflare D1 생성, `DB` binding 및 migration 적용이 끝나야 API가 실제 데이터를 읽고 씁니다. 그 전에는 저장 API가 동작하지 않습니다.
+
+### Cloudflare D1 초기 설정
+
+Node.js와 npm을 설치한 뒤 저장소 루트에서 Wrangler를 사용합니다.
+
+```sh
+npm install --save-dev wrangler
+npx wrangler login
+npx wrangler d1 create knowledge-youtuber-archive
+```
+
+생성 결과의 `database_id`를 `wrangler.toml`의 `REPLACE_WITH_D1_DATABASE_ID` 대신 입력합니다. Cloudflare 대시보드의 Pages 프로젝트 설정에서 Functions의 D1 binding 이름을 `DB`로 지정하고 같은 데이터베이스를 연결합니다. 그다음 스키마와 초기 글/댓글 데이터를 적용합니다.
+
+```sh
+npx wrangler d1 migrations apply knowledge-youtuber-archive --local
+npx wrangler pages dev .
+```
+
+원격 D1을 준비하고 같은 migration을 production에 적용합니다.
+
+```sh
+npx wrangler d1 migrations apply knowledge-youtuber-archive --remote
+```
+
+`migrations/0001_create_archive_entries.sql`은 Wrangler D1 migration으로 적용합니다. 초기 게시글과 디자인 예시 댓글도 들어 있으므로 빈 새 DB에 한 번 적용해야 합니다.
+
+배포 후 `POST /api/archive`는 게시글/댓글을 저장하고 `GET /api/archive`는 목록을 읽습니다. Pages 프로젝트는 Functions 경로(`/api/*`)를 실행하기 위해 Git 연동 방식으로 배포되어야 합니다. 브라우저에서 SQLite 파일에 직접 쓰지 않고 서버 측 Function이 입력값을 검증해 DB에 저장합니다.
+
+현재 개발 환경에는 Node.js/Wrangler와 Cloudflare 인증이 준비되어 있지 않아 원격 D1 생성, binding 등록, migration 적용 및 실제 원격 저장 확인은 아직 수행되지 않았습니다. `wrangler.toml`의 database ID도 Cloudflare 생성 후 교체해야 합니다. `file://`로 페이지를 직접 열면 API를 사용할 수 없으므로 Pages 개발 서버 또는 배포 URL에서 테스트해야 합니다. 공개 서비스 전에는 댓글 작성 인증, 스팸 방지 및 요청 빈도 제한도 추가해야 합니다.
 - Google Fonts와 Unsplash 이미지는 인터넷 연결이 필요합니다. 연결할 수 없는 경우 브라우저의 대체 글꼴이 사용되며 외부 이미지는 표시되지 않을 수 있습니다.
 - 현재 영상 카드와 구독 링크는 시안용 YouTube 링크를 사용합니다. 실제 채널을 연결할 때 각 링크를 해당 영상 또는 채널 주소로 교체해야 합니다.
-- 이 프로젝트는 정적 파일 사이트이므로 패키지 설치나 빌드 명령이 필요하지 않습니다.
+- 프론트엔드 화면은 정적 HTML/CSS 파일이지만, 게시글과 댓글 저장 API를 로컬에서 실행하려면 Node.js/npm과 Wrangler가 필요합니다.
