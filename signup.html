@@ -20,15 +20,15 @@
       <section class="member-form-panel" aria-labelledby="signup-title">
         <nav class="member-tabs" aria-label="계정 메뉴"><a href="signup.html" aria-current="page">회원가입</a><a href="login.html">로그인</a></nav>
         <div class="member-heading"><h2 id="signup-title">회원가입</h2><p>아래 정보를 입력해 구독자 계정을 만들어 보세요.</p></div>
-        <form class="member-form" action="#" method="post">
+        <form class="member-form">
           <div class="member-field"><label for="nickname">닉네임 <span aria-hidden="true">*</span></label><input id="nickname" name="nickname" type="text" autocomplete="nickname" minlength="2" maxlength="40" placeholder="사용할 닉네임" required></div>
           <div class="member-field"><label for="email">이메일 주소 <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" placeholder="name@example.com" required></div>
           <fieldset class="member-field"><legend>성별 <span aria-hidden="true">*</span></legend><div class="gender-options"><label class="gender-option"><input type="radio" name="gender" value="female" required><span>여성</span></label><label class="gender-option"><input type="radio" name="gender" value="male" required><span>남성</span></label><label class="gender-option"><input type="radio" name="gender" value="undisclosed" required><span>응답 안 함</span></label></div></fieldset>
           <div class="member-field"><label for="address">집주소 <span aria-hidden="true">*</span></label><input id="address" name="address" type="text" autocomplete="street-address" maxlength="300" placeholder="도로명 주소와 상세 주소를 입력해 주세요." required></div>
           <label class="member-check"><input type="checkbox" name="privacy-consent" required><span>회원가입에 필요한 개인정보 수집·이용 안내를 확인했으며 동의합니다. <b>(필수)</b></span></label>
-          <button class="member-submit" type="submit">회원가입하기</button>
+          <button class="member-submit" type="button" disabled aria-disabled="true">회원가입 기능 준비 중</button>
         </form>
-        <p class="member-security"><strong>개인정보 안내</strong><span>집주소와 성별은 민감한 개인정보입니다. 실제 가입과 저장을 활성화하기 전에는 안전한 HTTPS 서버, 접근 권한, 보관·삭제 정책을 마련해야 합니다. 현재 페이지는 입력 UI 예시이며 제출 데이터를 저장하지 않습니다.</span></p>
+        <p class="member-security"><strong>개인정보 안내</strong><span>현재는 화면 시안만 제공하며 입력 정보는 전송·저장되지 않습니다. 백엔드 연결 전까지 회원가입 버튼은 비활성화되어 있습니다. 집주소와 성별을 수집하는 실제 서비스는 안전한 HTTPS 서버와 개인정보 보호 조치를 준비해야 합니다.</span></p>
         <p class="member-footer-link">이미 계정이 있나요?<a href="login.html">로그인</a></p>
       </section>
     </div>

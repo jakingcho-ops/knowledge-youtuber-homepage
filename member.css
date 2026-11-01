@@ -32,6 +32,7 @@
 .member-check input{margin:2px 0 0;accent-color:#526d3d}
 .member-submit{width:100%;height:44px;margin-top:2px;border:0;background:#26372d;color:#fff;font:700 11px 'Noto Sans KR',sans-serif;cursor:pointer}
 .member-submit:hover{background:#405a3e}
+.member-submit:disabled{background:#9a9d91;color:#f5f4ef;cursor:not-allowed}
 .member-help{margin:13px 0 0;color:#94958b;font-size:8px;line-height:1.7}
 .member-security{display:flex;align-items:flex-start;gap:8px;margin-top:13px;padding:10px 11px;background:#f4f3ec;color:#74766e;font-size:8px;line-height:1.65}
 .member-security strong{color:#43533c;white-space:nowrap}
