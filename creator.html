@@ -35,19 +35,47 @@
         <div class="hero-actions"><a class="button button-dark" href="creator-videos.html">영상 둘러보기 <span>↗</span></a><a class="text-link" href="creator-about.html">크리에이터 소개 <span>↗</span></a></div>
         <div class="hero-stats"><div><strong>42만<span>+</span></strong><small>구독자</small></div><span class="stat-divider"></span><div><strong>180<span>+</span></strong><small>함께한 이야기</small></div><span class="stat-divider"></span><div><strong>매주<span> 2회</span></strong><small>새로운 영상</small></div></div>
       </div>
-      <div class="hero-art" aria-label="책과 아이디어를 표현한 일러스트">
-        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-sun"></div>
-        <div class="art-label label-top">IDEAS, CONNECTED <span>✳</span></div>
-        <div class="book book-back"><span>THE<br>WORLD</span></div>
-        <div class="book book-front"><span class="book-small">A FIELD GUIDE TO</span><strong>호기심의<br>지도</strong><span class="book-rule"></span><span class="book-author">KNOW MORE, WONDER MORE</span><span class="book-sun">✳</span></div>
-        <span class="floating-star star-one">✳</span><span class="floating-star star-two">✳</span><span class="floating-note">한 페이지씩,<br>넓어지는 세계</span>
-        <div class="art-caption"><span>01 / 03</span><span class="caption-line"></span><span>THINK A LITTLE DEEPER</span></div>
+      <div class="hero-art" role="img" aria-label="고대 문헌의 삽화처럼 그린 판타지 세계 지도와 나침반">
+        <div class="map-grain" aria-hidden="true"></div>
+        <div class="map-label map-label-north">SEPTENTRION</div>
+        <div class="map-label map-label-east">TERRA INCOGNITA</div>
+        <svg class="ancient-map" viewBox="0 0 620 520" aria-hidden="true" focusable="false">
+          <defs>
+            <filter id="map-shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#312c20" flood-opacity=".25"/></filter>
+            <pattern id="map-hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><line x1="0" y1="0" x2="0" y2="8" stroke="#6d694d" stroke-opacity=".2" stroke-width="2"/></pattern>
+            <clipPath id="map-inner-clip"><path d="m111 72 365 15 18 315-378 23-23-183Z"/></clipPath>
+          </defs>
+          <path class="map-sheet-shadow" d="M89 57 497 68 520 426 103 450 72 245Z" filter="url(#map-shadow)"/>
+          <path class="map-sheet" d="m91 50 407 17 23 357-420 28-27-211Z"/>
+          <path class="map-border" d="m111 72 365 15 18 315-378 23-23-183Z"/>
+          <g clip-path="url(#map-inner-clip)">
+          <path class="map-coast" d="M128 183c24-29 42-22 59-43 16-20 36-17 51-1 12 14 7 29 26 35 17 6 19 24 9 36-12 15-7 27 10 35 17 9 17 23 4 38-13 16-10 29 8 43 15 12 16 26 2 39-13 12-34 10-45-4-11-15-21-17-37-8-17 9-32 3-36-13-5-18-18-22-33-14-18 9-34-3-30-21 3-16-2-28-16-38-17-12-17-30 0-42 14-10 20-25 3-42-12-13-11-25 5-40Z"/>
+          <path class="map-island" d="M333 153c21-17 46-11 51 8 4 17-11 24-25 29-18 7-24 20-19 36 6 18-7 31-22 24-13-6-14-20-7-34 8-15 3-29-7-39-11-11-4-17 29-24Z"/>
+          <path class="map-island" d="M410 310c17-12 34-8 37 6 2 12-9 22-23 23-13 1-22-9-14-18Z"/>
+          <path class="map-mountain" d="m173 154 13-24 12 22 10-14 17 29m-36 74 14-22 11 18 12-27 17 34m65-82 13-22 13 18 10-13 17 23m-67 152 14-23 13 19 14-27 16 26"/>
+          <path class="map-forest" d="m148 322 8-19 8 19Zm18 11 7-16 7 16Zm224-151 8-18 8 18Zm19 9 7-15 7 15Z"/>
+          <path class="map-river" d="M205 167c-16 21 6 32-7 53s13 28 2 47 11 25 4 43m116-140c-20 17-6 29-19 42s6 29-7 43 3 24-5 39m-98-64c22 8 25-10 44-4s18 25 38 21 24 17 41 10"/>
+          <path class="map-route" d="M148 126c61 38 72 109 144 116s89 70 153 70"/>
+          <circle class="map-route-point" cx="148" cy="126" r="5"/><circle class="map-route-point" cx="292" cy="242" r="5"/><circle class="map-route-point" cx="445" cy="312" r="5"/>
+          <path class="map-sea-monster" d="M420 203c13-11 24-9 29 1l13-7-5 13 9 7-15 1c-5 12-20 15-29 6-8-8-8-14-2-21Zm40 1 10-8-2 13m-26 27 7 11 8-10"/>
+          <g class="map-compass" transform="translate(430 370)"><circle r="37"/><circle r="29"/><path d="M0-31 6-5 0 0-6-5ZM0 31-6 5 0 0 6 5ZM-31 0-5-6 0 0-5 6ZM31 0 5 6 0 0 5-6Z"/><text x="0" y="-43" text-anchor="middle">N</text></g>
+          <path class="map-scale" d="M145 384h65m-65-5v10m32-8v6m33-8v10"/>
+          <text class="map-script" x="277" y="112" text-anchor="middle">호기심의 지도</text>
+          <text class="map-caption" x="277" y="130" text-anchor="middle">MAPPAMUNDI CURIOSITATIS</text>
+          <path class="map-windrose" d="m390 112 4 11 11 4-11 4-4 11-4-11-11-4 11-4Z"/>
+          </g>
+        </svg>
+        <span class="floating-star star-one">✳</span><span class="floating-star star-two">✧</span>
+        <span class="map-side-note note-left"><i>✳</i><span>THE OLD<br>WORLD</span></span>
+        <span class="map-side-note note-right"><i>⌖</i><span>HERE BE<br>WONDERS</span></span>
+        <span class="floating-note">미지의 세계를<br>향한 여정</span>
+        <div class="art-caption"><span>CHARTA MUNDI</span><span class="caption-line"></span><span>FOLLOW YOUR CURIOSITY</span></div>
       </div>
       <a class="scroll-cue" href="creator-about.html" aria-label="크리에이터 소개 페이지로 이동"><span></span> MEET THE CREATOR</a>
     </section>
 
     <section class="about-section section-wrap" id="about">
-      <div class="about-photo"><div class="photo-frame"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=85" alt="지식 크리에이터 프로필 사진"></div><span class="photo-sticker">반가워요!<br>오늘도 궁금한<br>게 있나요? <b>↗</b></span><span class="photo-index">CREATOR NOTE — 001</span></div>
+      <div class="about-photo"><div class="photo-frame"><img class="archaeologist-avatar" src="archaeologist-avatar.svg" alt="한국인 여성 고고학자. 얼굴 바로 아래로 목이 이어지고 셔츠와 재킷이 한 몸처럼 연결된 로우폴리 캐릭터."></div><span class="photo-sticker">안녕하세요!<br>유물을 따라<br>시간을 읽어요 <b>↗</b></span><span class="photo-index">CREATOR NOTE — 001</span></div>
       <div class="about-copy"><span class="section-kicker">A LITTLE ABOUT ME</span><h2>안녕하세요,<br><span>지식의 지도</span>입니다<span class="period">.</span></h2><p class="about-lead">알면 알수록 세상이 조금 더 흥미로워진다고 믿어요.</p><p class="about-body">책 속의 역사부터 오늘의 과학, 우리를 둘러싼 사회의 이야기까지. 어렵게만 느껴졌던 지식을 일상의 언어로 풀어 전합니다. 정답을 알려주기보다, 더 좋은 질문을 함께 찾아가는 크리에이터예요.</p><div class="about-signature"><span class="signature-mark">JM.</span><span>궁금한 게 많은 사람, 지식의 지도</span></div><a class="underlined-link" href="#topics">제가 좋아하는 것들 <span>↗</span></a></div>
     </section>
 
