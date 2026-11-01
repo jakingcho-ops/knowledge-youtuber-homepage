@@ -24,6 +24,7 @@
 - `archive-client.js` — 아카이브와 Pages Function API 간 게시글·댓글 조회/등록을 연결합니다.
 - `functions/api/archive.js` — Cloudflare Pages Function API입니다. `GET /api/archive`로 목록을 읽고 `POST /api/archive`로 게시글/댓글을 저장합니다.
 - `migrations/0001_create_archive_entries.sql` — 게시글과 댓글을 함께 보관하는 단일 D1 테이블 `archive_entries`와 초기 글/댓글 데이터입니다.
+- `migrations/0002_create_users.sql` — 회원가입 양식용 `users` 테이블 스키마입니다. 이메일은 중복을 막고 성별 값과 입력 길이를 제한합니다.
 - `wrangler.toml` — Pages 출력 폴더와 D1 바인딩을 설정합니다. Cloudflare에서 생성한 D1 ID가 필요합니다.
 - `sitemap.xml` — 검색엔진용 XML 사이트맵입니다.
 - `creator.css` — 홈페이지와 하위 페이지의 공통 스타일 및 반응형 레이아웃입니다.
@@ -51,6 +52,7 @@ sitemap.xml
 
 - 콘텐츠 페이지의 필터와 모바일 메뉴, 아카이브 데이터 조회/등록은 브라우저 JavaScript로 동작합니다.
 - 게시글·댓글 저장용 Pages Function API와 D1 migration 코드가 준비되어 있습니다. 게시글과 댓글은 `entry_type`과 `parent_id`로 구분해 단일 `archive_entries` 테이블에 저장하도록 설계했습니다.
+- 회원가입 UI에 대응하는 `users` 테이블 스키마도 준비되어 있지만, 이 프로젝트 요청 범위에서는 백엔드와 인증 처리를 구현하지 않았으므로 회원 정보를 실제로 저장하지 않습니다.
 - Cloudflare D1 생성, `DB` binding 및 migration 적용이 끝나야 API가 실제 데이터를 읽고 씁니다. 그 전에는 저장 API가 동작하지 않습니다.
 
 ### Cloudflare D1 초기 설정

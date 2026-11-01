@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta name="description" content="지식의 지도 구독자 로그인 페이지입니다.">
+  <title>로그인 | 지식의 지도</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="creator.css">
+  <link rel="stylesheet" href="member.css">
+</head>
+<body>
+  <header class="topbar"><div class="topbar-inner member-nav"><a class="wordmark" href="creator.html" aria-label="지식의 지도 홈"><span class="wordmark-icon" aria-hidden="true"><i></i><i></i><i></i></span><span>지식의 지도<span class="wordmark-en">MAP OF KNOWLEDGE</span></span></a><a href="creator.html">홈</a><a href="signup.html">회원가입</a></div></header>
+  <main class="member-page">
+    <div class="member-shell">
+      <aside class="member-aside"><div class="member-aside-copy"><span class="section-kicker">WELCOME BACK</span><h1>다시 만나 반가워요,<br><span>탐험을 이어가요.</span></h1><p>새로운 질문과 지식이 기다리고 있어요.</p></div><span class="member-aside-mark" aria-hidden="true">JM.</span></aside>
+      <section class="member-form-panel" aria-labelledby="login-title">
+        <nav class="member-tabs" aria-label="계정 메뉴"><a href="signup.html">회원가입</a><a href="login.html" aria-current="page">로그인</a></nav>
+        <div class="member-heading"><h2 id="login-title">로그인</h2><p>가입한 이메일 주소와 비밀번호를 입력해 주세요.</p></div>
+        <form class="member-form" action="#" method="post">
+          <div class="member-field"><label for="login-email">이메일 주소</label><input id="login-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required></div>
+          <div class="member-field"><label for="password">비밀번호</label><input id="password" name="password" type="password" autocomplete="current-password" minlength="8" placeholder="비밀번호를 입력해 주세요." required></div>
+          <label class="member-check"><input type="checkbox" name="remember"><span>로그인 상태 유지</span></label>
+          <button class="member-submit" type="submit">로그인</button>
+        </form>
+        <p class="member-security"><strong>로그인 안내</strong><span>현재 화면은 HTML/CSS 기반 시안이며 계정 확인이나 비밀번호 저장을 수행하지 않습니다. 실제 인증에는 서버 측 API와 안전한 비밀번호 해시 저장이 필요합니다.</span></p>
+        <p class="member-footer-link">아직 회원이 아니신가요?<a href="signup.html">회원가입</a></p>
+      </section>
+    </div>
+  </main>
+  <footer class="footer"><div class="footer-bottom"><span>© 2025 MAP OF KNOWLEDGE. MADE WITH CURIOSITY.</span><a href="creator.html">홈으로 ↗</a></div></footer>
+</body>
+</html>
