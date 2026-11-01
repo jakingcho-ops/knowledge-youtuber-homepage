@@ -24,13 +24,15 @@
           <div class="member-field"><label for="login-email">이메일 주소</label><input id="login-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required></div>
           <div class="member-field"><label for="password">비밀번호</label><input id="password" name="password" type="password" autocomplete="current-password" minlength="8" placeholder="비밀번호를 입력해 주세요." required></div>
           <label class="member-check"><input type="checkbox" name="remember"><span>로그인 상태 유지</span></label>
-          <button class="member-submit" type="button" disabled aria-disabled="true">로그인 기능 준비 중</button>
+          <p class="form-message" aria-live="polite" role="status"></p>
+          <button class="member-submit" type="submit">로그인</button>
         </form>
-        <p class="member-security"><strong>로그인 안내</strong><span>현재는 로그인 화면 시안만 제공하며 계정 확인이나 비밀번호 저장을 하지 않습니다. 백엔드 연결 전까지 로그인 버튼은 비활성화되어 있습니다.</span></p>
+        <p class="member-security"><strong>로그인 안내</strong><span>로그인 세션은 보안 쿠키로 관리됩니다. 공용 기기에서는 사용 후 로그아웃해 주세요.</span></p>
         <p class="member-footer-link">아직 회원이 아니신가요?<a href="signup.html">회원가입</a></p>
       </section>
     </div>
   </main>
   <footer class="footer"><div class="footer-bottom"><span>© 2025 MAP OF KNOWLEDGE. MADE WITH CURIOSITY.</span><a href="creator.html">홈으로 ↗</a></div></footer>
+  <script src="member.js"></script>
 </body>
 </html>
