@@ -5,5 +5,5 @@ pages_build_output_dir = "."
 [[d1_databases]]
 binding = "DB"
 database_name = "knowledge-youtuber-archive"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "e7771e7e-e7a7-457a-ae27-7e426c46ef41"
 migrations_dir = "migrations"
