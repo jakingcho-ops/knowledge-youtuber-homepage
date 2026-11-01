@@ -10,7 +10,7 @@
 | **CSS3** | 색상·타이포그래피·레이아웃·카드 디자인과 화면 크기별 반응형 스타일을 구현합니다. |
 | **Vanilla JavaScript (ES6+)** | 영상 주제 필터, 현재 페이지 메뉴 표시, 모바일 메뉴 열기·닫기를 처리합니다. 별도의 JavaScript 프레임워크는 사용하지 않습니다. |
 | **Google Fonts** | 한글 본문 글꼴 `Noto Sans KR`과 영문 UI 글꼴 `DM Sans`를 불러옵니다. |
-| **Unsplash 이미지** | 크리에이터 소개 영역의 프로필 예시 이미지를 외부 URL로 표시합니다. |
+| **PNG 프로필 이미지** | `images/my-profile.png`를 메인 및 크리에이터 소개 페이지의 프로필 이미지로 사용합니다. |
 
 ## 페이지 구성
 
@@ -85,6 +85,6 @@ npx wrangler d1 migrations apply knowledge-youtuber-archive --remote
 배포 후 `POST /api/archive`는 게시글/댓글을 저장하고 `GET /api/archive`는 목록을 읽습니다. Pages 프로젝트는 Functions 경로(`/api/*`)를 실행하기 위해 Git 연동 방식으로 배포되어야 합니다. 브라우저에서 SQLite 파일에 직접 쓰지 않고 서버 측 Function이 입력값을 검증해 DB에 저장합니다.
 
 현재 개발 환경에는 Node.js/Wrangler와 Cloudflare 인증이 준비되어 있지 않아 원격 D1 생성, binding 등록, migration 적용 및 실제 원격 저장 확인은 아직 수행되지 않았습니다. `wrangler.toml`의 database ID도 Cloudflare 생성 후 교체해야 합니다. `file://`로 페이지를 직접 열면 API를 사용할 수 없으므로 Pages 개발 서버 또는 배포 URL에서 테스트해야 합니다. 공개 서비스 전에는 댓글 작성 인증, 스팸 방지 및 요청 빈도 제한도 추가해야 합니다.
-- Google Fonts와 Unsplash 이미지는 인터넷 연결이 필요합니다. 연결할 수 없는 경우 브라우저의 대체 글꼴이 사용되며 외부 이미지는 표시되지 않을 수 있습니다.
+- Google Fonts는 인터넷 연결이 필요합니다. 연결할 수 없는 경우 브라우저의 대체 글꼴이 사용됩니다. 프로필 사진은 저장소의 로컬 PNG 자산을 사용합니다.
 - 현재 영상 카드와 구독 링크는 시안용 YouTube 링크를 사용합니다. 실제 채널을 연결할 때 각 링크를 해당 영상 또는 채널 주소로 교체해야 합니다.
 - 프론트엔드 화면은 정적 HTML/CSS 파일이지만, 게시글과 댓글 저장 API를 로컬에서 실행하려면 Node.js/npm과 Wrangler가 필요합니다.
